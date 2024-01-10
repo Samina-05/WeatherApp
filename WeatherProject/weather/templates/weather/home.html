@@ -1,0 +1,21 @@
+<!-- weather/templates/weather/home.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+</head>
+<body>
+    <h2>Weather App</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Get Weather</button>
+    </form>
+    {% if weather_data %}
+        <h3>Weather in {{ weather_data.name }}, {{ weather_data.sys.country }}</h3>
+        <p>Temperature: {{ weather_data.main.temp }} &#8451;</p>
+        <p>Weather: {{ weather_data.weather.0.description }}</p>
+    {% endif %}
+</body>
+</html>
